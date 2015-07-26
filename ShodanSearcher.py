@@ -3,14 +3,21 @@ __author__ = 'Capibara'
 import shodan
 import sys
 import requests
+import argparse
 
 SHODAN_API_KEY = ""
 
 def main(argv):
-    if len(argv) != 2 and len(argv) != 3:
-        print "Usage: %s <search term> [country]." % argv[0]
-        return
-    search_term = argv[1] if len(argv) == 2 else "%s country:%s" % (argv[1], argv[2])
+    parser = argparse.ArgumentParser()
+    parser.add_argument('keywords', nargs='+', help='Search term.')
+    parser.add_argument('--country', '-c', help='Country code.')
+    args = parser.parse_args()
+
+
+    keywords = ' '.join(args.keywords)
+    search_term = "%s country:%s" % (keywords, args.country) if args.country else keywords
+    print search_term
+    return
     api = shodan.Shodan(SHODAN_API_KEY)
 
     try:
