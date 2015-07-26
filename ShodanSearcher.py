@@ -16,8 +16,6 @@ def main(argv):
 
     keywords = ' '.join(args.keywords)
     search_term = "%s country:%s" % (keywords, args.country) if args.country else keywords
-    print search_term
-    return
     api = shodan.Shodan(SHODAN_API_KEY)
 
     try:
