@@ -4,7 +4,7 @@ import shodan
 import sys
 import requests
 
-SHODAN_API_KEY = "Jvt0B5uZIDPJ5pbCqMo12CqD7pdnMSEd"
+SHODAN_API_KEY = ""
 
 def main(argv):
     if len(argv) != 2 and len(argv) != 3:
